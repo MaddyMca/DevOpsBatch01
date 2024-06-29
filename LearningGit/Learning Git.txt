@@ -1,0 +1,212 @@
+Learning Git
+A memory map for the Git command which I use from time to time. These are most used git commands.
+
+git init
+Use Case: Initializes a new Git repository. This command sets up the necessary Git metadata and prepares the directory for version tracking.
+Example: git init
+
+
+git clone [url]
+Use Case: Makes a clone, or copy, of an existing repository into a new directory. This is typically used to get a local copy of a remote repository.
+Example: git clone https://github.com/user/repository.git
+
+
+git add [file]
+Use Case: Adds files to the staging area in preparation for a commit. This command is used to select specific changes that should be included in the next commit.
+Example: git add index.html or git add . to add all changes.
+git commit --amend: Modifies the most recent commit. This can be used to correct the commit message or to add new changes to the previous commit.
+git commit --amend -m "Updated commit message"
+
+
+git commit -m "message"
+Use Case: Records changes to the repository. Each commit has an associated commit message that explains the changes made.
+Example: git commit -m "Add initial project files"
+
+
+git status
+Use Case: Displays the state of the working directory and the staging area. It lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git.
+Example: git status
+
+
+git log
+Use Case: Shows the commit history for the current branch. This command is used to review the sequence of commits that have been made.
+Example: git log
+git log --graph --decorate --all: Visualizes the commit history using ASCII art graphs, including branch pointers and tags, which is helpful for understanding the branching and merging history.
+
+
+git pull [remote] [branch]
+Use Case: Fetches and merges changes from the remote server to your working directory. Commonly used to sync local changes with the remote repository.
+Example: git pull origin main
+
+
+git push [remote] [branch]
+Use Case: Sends local branch commits to the remote repository branch. This command is used to share your commits with others.
+Example: git push origin main
+
+
+git branch
+Use Case: Lists, creates, or deletes branches. It is used to manage multiple lines of development within the same repository.
+Example: git branch new-feature to create a branch.
+
+
+git checkout [branch]
+Use Case: Switches branches or restores working tree files. This is a key command for navigating between branches.
+Example: git checkout new-feature
+
+
+git merge [branch]
+Use Case: Merges a specified branch into the current branch. This command is used to integrate changes from one branch into another.
+Example: git merge new-feature
+
+
+git rebase [branch] Use Case: Applies changes from one branch onto another without creating a merge commit. This is often used to maintain a linear project history. Example: git rebase main
+
+git stash
+Use Case: Temporarily stores all modified tracked files and stages changes to be revisited later on. Useful for switching contexts without committing unfinished work.
+Example: git stash
+
+
+git tag [tag-name]
+Use Case: Marks specific points in history as important. Typically used to mark release points (v1.0, v2.0, etc.).
+Example: git tag v1.0.0
+
+
+git tag -a v1.0 -m "Release version 1.0"
+Use Case: Creates an annotated tag. Tags are used to mark specific points in history as being important, typically used for releases.
+Example: git tag -a v1.0 -m "Release version 1.0"
+git push --tags
+Use Case: Pushes all local tags to the remote repository.
+Example: git push --tags
+
+
+git diff
+Use Case: Shows the differences between two Git data points, such as branches, commits, and more. Useful for code reviews and comparing changes.
+Example: git diff
+
+
+git config
+Use Case: Sets or gets Git configuration settings. Crucial for configuring user information, remote repository settings, and more.
+Example: git config --global user.name "Your Name"
+
+
+git remote add [name] [url]
+Use Case: Adds a new remote Git repository as a shortcut you can reference easily.
+Example: git remote add origin https://github.com/user/repo.git
+
+
+git fetch [remote]
+Use Case: Downloads all changes from the remote repository, but doesn't integrate any of this new data into your working files. It's useful for viewing what others have done without merging those changes into your own branches.
+Example: git fetch origin
+
+
+git reset
+Use Case: Resets your index (staging area) and working directory to the state of a specified commit. Various options (--soft, --mixed, --hard) dictate how thorough the reset is.
+Example: git reset --hard HEAD~1 (Dangerously resets the current branch to the state of the commit one step back, discarding all intervening changes)
+
+
+git revert [commit]
+Use Case: Creates a new commit that undoes the changes from a specified commit. This is a safe way to undo changes and share the undo with others.
+Example: git revert 1a2b3c4
+
+
+git lfs
+git lfs track "*.psd"
+Use Case: Tracks large files with Git Large File Storage (LFS), preventing them from bloating the repository size.
+Example: git lfs track "*.psd"
+git lfs ls-files
+Use Case: Lists the files being tracked by Git LFS.
+Example: git lfs ls-files
+
+
+git submodule
+git submodule add [url] [path]
+Use Case: Adds a new submodule to your project. Submodules allow you to keep a Git repository as a subdirectory of another Git repository.
+Example: git submodule add https://github.com/username/repo lib/repo
+git submodule update --init --recursive
+Use Case: Updates the submodules, initializing and updating them and any nested submodules.
+Example: git submodule update --init --recursive
+
+
+git show [commit]
+Use Case: Shows various types of objects (commits, tags, etc.), typically used to view information about specific commits.
+Example: git show 1a2b3c4d
+
+
+git blame [file]
+Use Case: Shows what revision and author last modified each line of a file. It's particularly useful for figuring out who made specific changes.
+Example: git blame index.html
+
+
+git clean
+git clean -n
+Use Case: Shows which untracked files would be removed from the working directory (without actually removing them).
+Example: git clean -n
+git clean -f
+Use Case: Removes untracked files from the working directory.
+Example: git clean -f
+
+
+git format-patch HEAD~3
+Use Case: Creates patch files for the last 3 commits, which can be emailed or used elsewhere.
+Example: git format-patch HEAD~3
+
+
+git apply [patch-file]
+Use Case: Applies a patch file to your working directory.
+Example: git apply fix.patch
+
+
+git rm [file]
+Use Case: Removes files from the working directory and the index (staging area), effectively staging them for deletion.
+Example: git rm file.txt
+Note: After using git rm, you need to commit the change.
+
+
+git mv [old-file] [new-file]
+Use Case: Moves or renames a file, directory, or symlink, automatically staging the change for the next commit.
+Example: git mv old_name.txt new_name.txt
+
+
+git restore [file]
+Use Case: Restores files in the working directory. Useful for discarding changes in the working directory.
+Example: git restore file.txt
+
+
+git restore --staged [file]
+Use Case: Unstages a file while retaining the changes in the working directory.
+Example: git restore --staged file.txt
+
+
+git cherry-pick [commit]
+Use Case: Applies the changes introduced by some existing commits to the current branch. Useful for pulling individual changes from another branch without merging full branches.
+Example: git cherry-pick 4a5e6f7
+
+
+git describe [commit]
+Use Case: Gives a human-readable description of a commit, typically describing how far a commit is from an annotated tag.
+Example: git describe --tags
+
+
+git worktree add [path] [branch]
+Use Case: Manages multiple working trees attached to the same repository, allowing you to check out multiple branches at once.
+Example: git worktree add ../new-worktree experiment-branch
+
+
+git grep [pattern]
+Use Case: Lets you search through your tracked files in the working directory for a string or regular expression.
+Example: git grep "initializeApp"
+
+
+git bisect start
+Use Case: Uses binary search to find the commit that introduced a bug. You start by marking a known bad commit and a known good commit, and Git helps you narrow down to the exact commit introducing the bug.
+Example: git bisect start; git bisect bad; git bisect good 1a2b3c4
+
+
+git shortlog
+Use Case: Summarizes git log output. It groups commit entries by author and can be used to quickly understand the contribution breakdown.
+Example: git shortlog
+
+
+git archive
+Use Case: Creates an archive (such as a tar or zip file) of files from a named tree (commit, branch, or tag).
+Example: git archive --format=zip HEAD > project.zip
