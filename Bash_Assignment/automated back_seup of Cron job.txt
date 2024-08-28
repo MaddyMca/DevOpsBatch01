@@ -1,0 +1,5 @@
+1) Open a cron tab file:
+crontab -e
+2) add the line to schedule at 12 pm for the script
+0 0 * * * 0 0 * * * /d/DevOps_Cert/DevOpsBatch07/Bash Assignment/automated_backup.sh*
+3) Save the crontab file
